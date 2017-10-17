@@ -15,7 +15,7 @@ import (
 var (
 	url    = flag.String("i", "seashells.io", "URL/IP to use")
 	port   = flag.String("p", "1337", "Port to use")
-	output = flag.Bool("q", false, "Write to stdout")
+	output = flag.Bool("q", false, "Suppress writing to stdout")
 	delay = flag.Int("d", 0, "Delay")
 )
 

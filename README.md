@@ -18,6 +18,6 @@ $> seashells --help
         URL/IP to use (default "seashells.io")
     -p string
         Port to use (default "1337")
-    -q    Write to stdout
+    -q    Suppress writing to stdout
 ```
 
