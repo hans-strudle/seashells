@@ -8,15 +8,15 @@ import (
 	"log"
 	"net"
 	"os"
-    "time"
 	"syscall"
+	"time"
 )
 
 var (
 	url    = flag.String("i", "seashells.io", "URL/IP to use")
 	port   = flag.String("p", "1337", "Port to use")
 	output = flag.Bool("q", false, "Suppress writing to stdout")
-	delay = flag.Int("d", 0, "Delay")
+	delay  = flag.Int("d", 0, "Delay")
 )
 
 func main() {
@@ -30,18 +30,18 @@ func main() {
 
 	serverUrl, err := bufio.NewReader(conn).ReadString('\n')
 	fmt.Fprint(os.Stderr, serverUrl) // write url to sderr
-    
-    if *delay > 0 {
-        time.Sleep(time.Duration(*delay) * time.Second)
-    }
+
+	if *delay > 0 {
+		time.Sleep(time.Duration(*delay) * time.Second)
+	}
 
 	scan := bufio.NewReader(os.Stdin)
-    var both io.Writer
-    if *output == true {
-        both = conn
-    } else {
-	    both = io.MultiWriter(os.Stdout, conn) // will write to stdout and the net connection
-    }
+	var both io.Writer
+	if *output == true {
+		both = conn
+	} else {
+		both = io.MultiWriter(os.Stdout, conn) // will write to stdout and the net connection
+	}
 
 	done := make(chan error)
 
