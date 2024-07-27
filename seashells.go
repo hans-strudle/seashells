@@ -47,7 +47,7 @@ func main() {
 
 	go func() {
 		for {
-			_, err := syscall.Select(1, &syscall.FdSet{[16]int64{1}}, nil, nil, nil) // check for data on stdin
+			err := syscall.Select(1, &syscall.FdSet{[32]int32{1}}, nil, nil, nil) // check for data on stdin
 			done <- err
 
 			_, err = io.Copy(both, scan) // send the scan data to the multiwriter
